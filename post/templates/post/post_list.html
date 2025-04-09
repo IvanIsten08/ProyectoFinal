@@ -5,9 +5,9 @@
     <ul>
         {% for post in posts %}
         <li>
-            <a href="{% url 'post_detail' post.id %}">{{ post.title }}</a> - {{ post.published_date }}
+            <a href="{% url 'post:post_detail' post.id %}">{{ post.title }}</a> - {{ post.published_date }}
         </li>
         {% endfor %}
     </ul>
-    <a href="{% url 'post_create' %}">Crear nueva publicación</a>
+    <a href="{% url 'post:post_create' %}">Crear nueva publicación</a>
 {% endblock %}
