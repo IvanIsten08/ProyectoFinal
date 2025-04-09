@@ -1,6 +1,11 @@
 {% extends "myapp/base.html" %}
 {% block content %}
     <h1>Bienvenido a MiBlog</h1>
-    <p>Este es un sitio donde podras publicar tus pensamientos e incognitas que tengas para poderrelacionarte con otras personas que compartan
+    <p>Este es un sitio donde podras publicar tus pensamientos e incognitas que tengas para poder relacionarte con otras personas que compartan
     tus mismas inquietudes y pensamientos, debatir y conocer nuevos mundos a traves de los demas.</p>
+    {% if user.is_authenticated %}
+        <p>Hola, {{ user.username }}! Publica tus pensamientos y comparte tus ideas con el mundo.</p>
+    {% else %}
+        <p>Hola, visitante! Si deseas participar, por favor <a href="{% url 'myapp:login' %}">inicia sesión</a> o <a href="{% url 'myapp:register' %}">regístrate</a>.</p>
+    {% endif %}
 {% endblock %}

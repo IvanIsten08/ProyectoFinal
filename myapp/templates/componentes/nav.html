@@ -2,8 +2,19 @@
     <div>
         <ul>
             <li><a href="{% url 'myapp:index' %}">Home</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'myapp:about' %}">About</a></li>
+                <li><a href="{% url 'myapp:profile' %}">Profile</a></li>
+                <li><a href="https://www.linkedin.com/in/ivan-gimenez-91208a314">Contact</a></li>
+            <form method="post" action="{% url 'myapp:logout' %}">
+                {% csrf_token %}
+                <button type="submit">Cerrar sesion</button>
+            </form>
+            {% else %}
+                <li><a href="{% url 'myapp:login' %}">Login</a></li>
+                <li><a href="{% url 'myapp:register' %}">Register</a></li>
             <li><a href="{% url 'myapp:about' %}">About</a></li>
-            <li><a href="https://www.linkedin.com/in/ivan-gimenez-91208a314">Contact</a></li>
+            {% endif %}
         </ul>
     </div>
 </nav>

@@ -2,6 +2,9 @@
 
 {% block content %}
     <h1>Iniciar sesión</h1>
+    {% for message in messages %}
+        {{ message }}
+        {% endfor %}
     <form method="post">
        {% csrf_token %}
         <div>
