@@ -1,5 +1,7 @@
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import User
+
+
 class LoginForm(AuthenticationForm):
     class Meta:
         model = AuthenticationForm

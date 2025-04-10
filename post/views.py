@@ -18,4 +18,12 @@ class PostCreateView(CreateView):
 class PostDetailView(DetailView):
     model = models.Post
     template_name = 'post/post_detail.html'
+
+class PostUpdateView(UpdateView):
+    model = models.Post
+    form_class = forms.PostForm
+    success_url = reverse_lazy('post:post_list')
     
+class PostDeleteView(DeleteView):
+    model = models.Post
+    success_url = reverse_lazy('post:post_list')

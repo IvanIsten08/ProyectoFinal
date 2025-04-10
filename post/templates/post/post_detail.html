@@ -2,10 +2,13 @@
 
 {% block content %}
     <h1>{{ post.title }}</h1>
-    <ul>
-        <li>Publicado: {{ post.published_date }}</li>
-        <li>Autor: {{ post.author.username }}</li>
-    </li>
+    <div>
+        <ul>
+            <li>Publicado: {{ post.created_at }}</li>
+            <li>Autor: {{ user.username }}</li>
+            <li>Contenido: {{ post.content|safe }}</li>
+        </ul>
+    </div>
     <a href="{% url 'post:post_list' %}">Volver a publicaciones</a>
     {% endblock %}
     
