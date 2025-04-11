@@ -5,6 +5,20 @@
     <p>Nombre: {{ user.first_name }} {{ user.last_name }}</p>
     <p>Email: {{ user.email }}</p>
     <p>Fecha de registro: {{ user.date_joined }}</p>
+    
+    {% if perfil %}
+    <h2>Informacion Adicional</h2>
+    <p><strong>Biografía:</strong> {{ perfil.biografia }}</p>
+        {% if perfil.foto %}
+            <p><strong>Foto de perfil:</strong></p>
+            <img src="{{ perfil.foto.url }}" alt="Foto de perfil" style="width: 150px; height: auto;">
+        {% else %}
+            <p>No tienes foto de perfil.</p>
+        {% endif %}
+    {% else %}
+        <p>No tienes información adicional.</p>
+    {% endif %}
+
 
     <h2>Publicaciones</h2>
     {% if posts %}

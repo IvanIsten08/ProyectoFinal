@@ -5,6 +5,7 @@ from django.urls import reverse_lazy
 from django.http import HttpResponse
 from .forms import LoginForm, RegisterForm
 from django.views.generic import CreateView
+from .models import PerfilUsuario
 
 def index(request):
     context = {'msj': 'Comienza ahora a publicar tu blog'}
@@ -35,12 +36,20 @@ class MiRegisterView(CreateView):
     
     def form_valid(self, form):
         form.instance.is_active = True
+        response = super().form_valid(form)
+        PerfilUsuario.objects.create(usuario=self.object)
         messages.success(self.request, 'Usuario creado correctamente')
-        return super().form_valid(form)
+        return response
     
 def profile(request):
     if request.user.is_authenticated:
-        context = {'user': request.user}
+        try:
+            perfil = PerfilUsuario.objects.get(usuario=request.user)
+        except PerfilUsuario.DoesNotExist:
+            perfil = None
+            
+        context = {'user': request.user,
+                   'perfil': perfil}
         return render(request, 'myapp/profile.html', context)
     else:
         messages.error(request, 'Debes iniciar sesión para ver tu perfil')
