@@ -15,11 +15,11 @@
                                     <p>Hola, {{ user.username }}! Publica tus pensamientos y comparte tus ideas con el mundo.</p>
                                 {% else %}
                                     <p>Hola, visitante! Si deseas participar, por favor <a ></a> o <a ></a>.</p>
-                                {% endif %}
                                 <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                                     <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{% url 'myapp:login' %}">inicia sesión</a>
                                     <a class="btn btn-outline-light btn-lg px-4" href="{% url 'myapp:register' %}">regístrate</a>
                                 </div>
+                                {% endif %}
                             </div>
                         </div>
                         <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="{% static 'myapp/blogs.jpg' %}" alt="..." /></div>

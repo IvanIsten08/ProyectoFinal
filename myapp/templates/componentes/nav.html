@@ -9,10 +9,12 @@
                             <li class="nav-item"><a class="nav-link" href="{% url 'myapp:about' %}">About</a></li>
                             <li class="nav-item"><a class="nav-link" href="https://www.linkedin.com/in/ivan-gimenez-91208a314">Contact</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'myapp:profile' %}">Profile</a></li>
-                            <form method="post" action="{% url 'myapp:logout' %}">
-                            {% csrf_token %}
-                            <button type="submit" class="nav-link">Cerrar sesion</button>
-                            </form>
+                            <li class="nav-item">
+                                <form method="post" action="{% url 'myapp:logout' %}" class="d-inline">
+                                    {% csrf_token %}
+                                    <button type="submit" class="nav-link btn" style="border: none; background: none; padding: 0; margin: 0;">Cerrar sesion</button>
+                                </form>
+                            </li>                            
                             {% else %}
                             <li class="nav-item"><a class="nav-link" href="{% url 'myapp:login' %}">Login</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'myapp:register' %}">Register</a></li>
